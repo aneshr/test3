@@ -30,7 +30,7 @@ jobs:
         with:
           # Paste output of `az ad sp create-for-rbac` as value of secret variable: AZURE_CREDENTIALS
           creds: ${{ secrets.AZURE_SECRET  }}
-      - run: echo ${{ steps.deploy.outputs.factoryName }}
+      #- run: echo ${{ steps.deploy.outputs.factoryName }}
       - name: modifying parameters
         uses: whiteducksoftware/azure-arm-action@v3.2
         id: deploy
@@ -39,9 +39,8 @@ jobs:
           resourceGroupName: rg-appservice-test-01
           templateLocation: newFolder/arm_template.json
           parameters: newFolder/arm_template_parameters.json
-          overrideParameters: |
-            factoryName=newDataFactoryV22
-      - run: echo ${{ steps.deploy.outputs.factoryName }}
+  
+      - run: echo ${{ steps.deploy.parameters.factoryName }}
           #deploymentName: github-advanced-test
       
       - name: Deploy ARM Template
