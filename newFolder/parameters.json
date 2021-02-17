@@ -3,7 +3,7 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "storageAccounts_storageaccdev_name": {
-            "value": "storagestorageaccdev"
+            "value": "storageaccdev"
         }
     }
 }
