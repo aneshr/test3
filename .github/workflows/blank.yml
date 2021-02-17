@@ -30,7 +30,19 @@ jobs:
         with:
           # Paste output of `az ad sp create-for-rbac` as value of secret variable: AZURE_CREDENTIALS
           creds: ${{ secrets.AZURE_SECRET  }}
-          
+      - run: echo ${{ steps.deploy.parameters.factoryName }}
+      - name: modifying parameters
+        uses: whiteducksoftware/azure-arm-action@v3.2
+        id: deploy
+        with:
+          creds: ${{ secrets.AZURE_SECRET }}
+          resourceGroupName: azurearmaction
+          templateLocation: newFolder/arm_template.json
+          parameters: newFolder/arm_template_parameters.json
+          overrideParameters: |
+            factoryName=newDataFactoryV22
+      - run: echo ${{ steps.deploy.parameters.factoryName }}
+          #deploymentName: github-advanced-test
       
       - name: Deploy ARM Template
       # define required arguments for AZ CLI command 
@@ -42,5 +54,4 @@ jobs:
         with:
       # Execute AZ CLI command
           inlineScript: |
-            echo ${{ steps.deploy.parameters.factoryName }}
             az deployment group create --resource-group $RESOURCE_GROUP --template-file $TEMPLATEFILE --parameters $PARAMETERSFILE
