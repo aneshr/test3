@@ -3,7 +3,7 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "factoryName": {
-            "value": "newData"
+            "value": "newDataFactoryV22"
         },
         "AzureBlobStorage1_connectionString": {
             "value": ""
