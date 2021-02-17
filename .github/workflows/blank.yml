@@ -41,5 +41,5 @@ jobs:
         with:
       # Execute AZ CLI command
           inlineScript: |
-            echo $PARAMETERSFILE.parameters.factoryName
+            echo '$PARAMETERSFILE'.parameters.factoryName
             az deployment group create --resource-group $RESOURCE_GROUP --template-file $TEMPLATEFILE --parameters $PARAMETERSFILE
