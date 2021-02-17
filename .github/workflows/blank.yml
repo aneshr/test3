@@ -29,8 +29,9 @@ jobs:
         uses: Azure/login@v1
         with:
           # Paste output of `az ad sp create-for-rbac` as value of secret variable: AZURE_CREDENTIALS
-          creds: ${{ secrets.AZURE_SECRET  }} 
+          creds: ${{ secrets.AZURE_SECRET  }}
           
+      
       - name: Deploy ARM Template
       # define required arguments for AZ CLI command 
         env:
@@ -41,5 +42,5 @@ jobs:
         with:
       # Execute AZ CLI command
           inlineScript: |
-            echo '$PARAMETERSFILE'.parameters.factoryName
+            echo ${{ steps.deploy.parameters.factoryName }}
             az deployment group create --resource-group $RESOURCE_GROUP --template-file $TEMPLATEFILE --parameters $PARAMETERSFILE
