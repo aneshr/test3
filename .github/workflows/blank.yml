@@ -36,7 +36,7 @@ jobs:
         id: deploy
         with:
           creds: ${{ secrets.AZURE_SECRET }}
-          resourceGroupName: azurearmaction
+          resourceGroupName: rg-appservice-test-01
           templateLocation: newFolder/arm_template.json
           parameters: newFolder/arm_template_parameters.json
           overrideParameters: |
