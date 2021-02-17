@@ -37,10 +37,9 @@ jobs:
           RESOURCE_GROUP: rg-appservice-test-01
           TEMPLATEFILE: newFolder/arm_template.json
           PARAMETERSFILE: newFolder/arm_template_parameters.json
-          PARAMETERS: factoryName="newDataFactoryV22"
         uses: azure/CLI@v1
         with:
       # Execute AZ CLI command
           inlineScript: |
+            echo $PARAMETERS.parameters.factoryName
             az deployment group create --resource-group $RESOURCE_GROUP --template-file $TEMPLATEFILE --parameters $PARAMETERSFILE
-      
