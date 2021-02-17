@@ -40,7 +40,7 @@ jobs:
           templateLocation: newFolder/arm_template.json
           parameters: newFolder/arm_template_parameters.json
   
-      - run: echo ${{ steps.deploy.parameters.factoryName }}
+     # - run: echo ${{ steps.deploy.parameters.factoryName }}
           #deploymentName: github-advanced-test
       
       - name: Deploy ARM Template
@@ -53,4 +53,5 @@ jobs:
         with:
       # Execute AZ CLI command
           inlineScript: |
+            echo ${{ PARAMETERSFILE }}
             az deployment group create --resource-group $RESOURCE_GROUP --template-file $TEMPLATEFILE --parameters $PARAMETERSFILE
