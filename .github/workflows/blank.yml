@@ -35,8 +35,8 @@ jobs:
       # define required arguments for AZ CLI command 
         env:
           RESOURCE_GROUP: rg-appservice-test-01
-          TEMPLATEFILE: newFolder/template.json
-          PARAMETERSFILE: newFolder/parameters.json      
+          TEMPLATEFILE: newFolder/arm_template.json
+          PARAMETERSFILE: newFolder/arm_template_parameters.json      
         uses: azure/CLI@v1
         with:
       # Execute AZ CLI command
