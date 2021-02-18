@@ -51,4 +51,5 @@ jobs:
       # Execute AZ CLI command
           inlineScript: |
             cat $PARAMETERSFILE | jq
+            echo "Above is using jq"
             az deployment group create --resource-group $RESOURCE_GROUP --template-file $TEMPLATEFILE --parameters $PARAMETERSFILE
