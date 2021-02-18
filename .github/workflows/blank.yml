@@ -50,5 +50,5 @@ jobs:
         with:
       # Execute AZ CLI command
           inlineScript: |
-            sudo apt-get install jq
+            cat $PARAMETERSFILE | jq
             az deployment group create --resource-group $RESOURCE_GROUP --template-file $TEMPLATEFILE --parameters $PARAMETERSFILE
