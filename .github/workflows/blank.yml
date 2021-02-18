@@ -46,10 +46,13 @@ jobs:
           RESOURCE_GROUP: rg-appservice-test-01
           TEMPLATEFILE: newFolder/arm_template.json
           PARAMETERSFILE: newFolder/arm_template_parameters.json
+          UPDATEDFILE: $PARAMETERSFILE
         uses: azure/CLI@v1
         with:
       # Execute AZ CLI command
           inlineScript: |
-            cat $PARAMETERSFILE | jq
+            cat $PARAMETERSFILE | jq '.parameters.factoryName.value="newDataFactoryV22"' > $UPDATEDFILE
             echo "Above is using jq"
+            cat $UPDATEDFILE | jq
+            echo "UPDATED FILE"
             az deployment group create --resource-group $RESOURCE_GROUP --template-file $TEMPLATEFILE --parameters $PARAMETERSFILE
